@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 img_gray = cv2.imread("resources/flower.jpg",0)
 
 equ = cv2.equalizeHist(img_gray)
-
 res = np.hstack((img_gray, equ))
 cv2.imshow("stacked", res)
 
