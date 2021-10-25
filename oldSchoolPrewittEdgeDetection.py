@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 
-def prewitt_edge_detect(img, x_kernel, y_kernel):
+def edge_detect(img, x_kernel, y_kernel):
     temp_image = img.copy()
     w, h = temp_image.shape
     size = len(x_kernel)
@@ -20,7 +20,6 @@ def prewitt_edge_detect(img, x_kernel, y_kernel):
     w, h = temp_image.shape
 
     temp_image_result = np.empty((w, h), dtype="uint8")
-    temp_image_y = temp_image.copy()
 
     for i in range((w - size) + 1):
         for j in range((h - size) + 1):
@@ -58,10 +57,20 @@ def prewitt_edge_detect(img, x_kernel, y_kernel):
     return temp_image_result
 
 
-img_gray = cv2.imread("resources/shapes_black.jpg", 0)
-x_filter = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
-y_filter = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
-img_prewitt_edge_detected = prewitt_edge_detect(img_gray, x_filter, y_filter)
+img_gray = cv2.imread("resources/shapes_small.jpg", 0)
+
+x_filter_up = np.array([[1, 1, 1], [0, 0, 0], [-1, -1, -1]])
+x_filter_down = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
+y_filter_left = np.array([[1, 0, -1], [1, 0, -1], [1, 0, -1]])
+y_filter_right = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
+
+img_edge_detected_D_R = edge_detect(img_gray, x_filter_down, y_filter_right)
+img_edge_detected_U_L = edge_detect(img_gray, x_filter_up, y_filter_left)
+
+img_edge_detected_result = cv2.add(img_edge_detected_U_L, img_edge_detected_D_R)
+
 cv2.imshow("Original", img_gray)
-cv2.imshow("Result", img_prewitt_edge_detected)
+cv2.imshow("Result_D_R", img_edge_detected_D_R)
+cv2.imshow("Result_U_L", img_edge_detected_U_L)
+cv2.imshow("Result Final", img_edge_detected_result)
 cv2.waitKey()
