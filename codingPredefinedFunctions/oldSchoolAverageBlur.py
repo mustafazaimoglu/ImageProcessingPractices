@@ -32,7 +32,7 @@ def blur(img, size, filter_ratio):
     return result_image
 
 
-img_gray = cv2.imread("resources/emma.jpg", 0)
+img_gray = cv2.imread("../resources/emma.jpg", 0)
 
 img_gray_blurred = blur(img_gray, 3, 9)
 

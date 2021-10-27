@@ -25,7 +25,7 @@ def add_noise(img):
     return img
 
 
-img_gray = cv2.imread("resources/emma.jpg", 0)
+img_gray = cv2.imread("../resources/emma.jpg", 0)
 cv2.imshow("Original", img_gray)
 img_noised = add_noise(img_gray)
 cv2.imshow("Noised", img_noised)

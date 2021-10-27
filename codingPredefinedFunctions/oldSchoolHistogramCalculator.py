@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread("resources/image1.jpg")
+img = cv2.imread("../resources/image1.jpg")
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imshow("Original Image", imgGray)
 

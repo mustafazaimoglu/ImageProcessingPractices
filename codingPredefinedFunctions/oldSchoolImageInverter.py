@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 
-imgGray = cv2.imread("resources/lambo.jpg", 0)
+imgGray = cv2.imread("../resources/lambo.jpg", 0)
 w, h = imgGray.shape[0], imgGray.shape[1]
 
 imgInverted = imgGray.copy()

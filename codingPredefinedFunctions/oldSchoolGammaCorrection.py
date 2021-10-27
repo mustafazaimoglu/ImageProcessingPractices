@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("resources/emma.jpg")
+img = cv2.imread("../resources/emma.jpg")
 
 w, h, d = img.shape[0], img.shape[1], img.shape[2]
 imgGammaCorrected025 = np.zeros(shape=(w, h, d))

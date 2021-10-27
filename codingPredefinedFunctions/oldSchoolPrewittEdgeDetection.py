@@ -57,7 +57,7 @@ def edge_detect(img, x_kernel, y_kernel):
     return temp_image_result
 
 
-img_gray = cv2.imread("resources/shapes_small.jpg", 0)
+img_gray = cv2.imread("../resources/shapes_small.jpg", 0)
 
 x_filter_up = np.array([[1, 1, 1], [0, 0, 0], [-1, -1, -1]])
 x_filter_down = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])

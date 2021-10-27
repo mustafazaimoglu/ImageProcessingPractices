@@ -3,11 +3,8 @@ import cv2
 import numpy as np
 
 
-def blur(img):
+def blur(img, size):
     temp_image = img.copy()
-    size = 3
-    filter_matrix = np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]])
-    denominator = 16
     w, h = temp_image.shape[0], temp_image.shape[1]
     result = np.empty((w, h), dtype="uint8")
 
@@ -24,19 +21,21 @@ def blur(img):
 
     for i in range((w - size) + 1):
         for j in range((h - size) + 1):
-            temp_value = 0
+            arr = []
             for k in range(size):
                 for t in range(size):
-                    temp_value += (temp_image[i + k, j + t] * filter_matrix[k, t]) / denominator
+                    arr.append(temp_image[i + k, j + t])
 
-            result[i, j] = temp_value
+            arr.sort()
+            median_index = math.floor((size ** 2) / 2)
+            result[i, j] = arr[median_index]
 
     return result
 
 
-img_gray = cv2.imread("resources/emma.jpg", 0)
-img_gauss_blurred = blur(img_gray)
+img_gray = cv2.imread("../resources/salt_pepper_2.png", 0)
+img_median_blurred = blur(img_gray, 3)
 
 cv2.imshow("Original", img_gray)
-cv2.imshow("Gauss Blurred", img_gauss_blurred)
+cv2.imshow("Median Blurred", img_median_blurred)
 cv2.waitKey()
