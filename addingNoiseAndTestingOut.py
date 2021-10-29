@@ -12,7 +12,7 @@ img_gauss = cv2.add(img, gauss)
 cv2.imshow("Gauss Noise", gauss)
 
 gaussian_blur = cv2.GaussianBlur(noise_img, (5, 5), 0)
-blur_filter = np.ones((3, 3), np.float64) / (9.0)
+blur_filter = np.ones((3, 3), np.float64) / 9.0
 average_filter = cv2.filter2D(noise_img, -1, blur_filter)
 median_filter = cv2.medianBlur(noise_img, 5)
 bilateral_filter = cv2.bilateralFilter(noise_img, 3, 70, 50)
