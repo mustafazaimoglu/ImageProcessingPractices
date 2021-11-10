@@ -9,12 +9,12 @@ l = 256
 
 np.random.seed(1) # random da aynı sonuç çıkması için
 im = np.zeros((l, l))
-points = l * np.random.random((2, n ** 2)) # [2,144] bir dizi oluşturur random sayılardan ve 256 ile çarpar
+points = l * np.random.random((2, n ** 2)) # [2,144] bir dizi oluşturur random sayılardan ve 256 ile çarpar (0 - 256 arası degerler)
 
 im[(points[0]).astype(int), (points[1]).astype(int)] = 1 # denk gelen koordinatlara 1 girer
 im = filters.gaussian(im, sigma= l / (4. * n)) # yumşatma yaparak 1 i etrafa yayar yuvarlak oluşturur
 
-blobs = im > 0.7 * im.mean() # matrisi True False matrisine dönüştürür.
+blobs = im > 0.7 * im.mean() # matrisi True False matrisine dönüştürür. im.mean() matrisin ortalamasıdır.
 
 all_labels = measure.label(blobs) # True-False matrislerini numaralandırarak sayar
 blobs_labels = measure.label(blobs, background=0)
