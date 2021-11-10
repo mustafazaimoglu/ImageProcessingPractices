@@ -19,7 +19,7 @@ blobs = im > 0.7 * im.mean() # matrisi True False matrisine dönüştürür.
 all_labels = measure.label(blobs) # True-False matrislerini numaralandırarak sayar
 blobs_labels = measure.label(blobs, background=0)
 
-print(np.max(blobs_labels))
+print(np.max(blobs_labels)) # object Count
 
 plt.figure(figsize=(9,3.5))
 plt.subplot(131)
