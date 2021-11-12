@@ -7,8 +7,8 @@ import numpy as np
 n = 12
 l = 256
 
-np.random.seed(1) # random da aynı sonuç çıkması için
 im = np.zeros((l, l))
+np.random.seed(1) # random da aynı sonuç çıkması için
 points = l * np.random.random((2, n ** 2)) # [2,144] bir dizi oluşturur random sayılardan ve 256 ile çarpar (0 - 256 arası degerler)
 
 im[(points[0]).astype(int), (points[1]).astype(int)] = 1 # denk gelen koordinatlara 1 girer
